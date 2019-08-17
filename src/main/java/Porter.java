@@ -9,6 +9,7 @@ public class Porter {
         String s2 = s.substring(15);
         List<String> list1 = getSortedList(s1);
         List<String> list2 = getSortedList(s2);
+        if(isStraight(list1)||isStraight(list2))  return  compareIncludeStraight(list1,list2);
         if(isTreeKind(list1)||isTreeKind(list2))  return  compareIncludeTreeKind(list1,list2);
         if(isTwoPairs(list1)||isTwoPairs(list2))  return  compareIncludeTwoPair(list1,list2);
         if(isPair(list1)||isPair(list2))  return  compareIncludePair(list1,list2);
@@ -154,6 +155,23 @@ public class Porter {
             else if (list1Number1 > list2Number1) return "Person1Win";
             else if (list1Number1 == list2Number1) return judgeWhoWinInHighCard(list1,list2);
 
+        }
+        return "error";
+    }
+
+    public Boolean isStraight(List<String> sortedList){
+        for (int i = 0 ; i < sortedList.size() - 1 ; i++){
+            if (StringToInt(sortedList.get(i))+1 != StringToInt(sortedList.get(i+1)))  return false;
+        }
+        return true;
+    }
+    public String compareIncludeStraight(List<String> list1 , List<String> list2){
+        if (isStraight(list1)&&!isStraight(list2)) return "Person1Win";
+        else if (!isStraight(list1)&&isStraight(list2)) return "Person2Win";
+        else if(isStraight(list1)&&isStraight(list2)){
+            if (StringToInt(list1.get(list1.size()-1)) > StringToInt(list2.get(list2.size()-1))) return "Person1Win";
+            else if (StringToInt(list1.get(list1.size()-1)) < StringToInt(list2.get(list2.size()-1))) return "Person2Win";
+            else if (StringToInt(list1.get(list1.size()-1)) == StringToInt(list2.get(list2.size()-1))) return "Peace";
         }
         return "error";
     }
