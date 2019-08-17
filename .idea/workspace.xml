@@ -68,6 +68,16 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="PorterTest.should_return_Person2Win_when_2H_2H_5C_6D_8S_5H_6S_8S_9C_10C" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Porter" />
+      <option name="PACKAGE_NAME" value="test.java" />
+      <option name="MAIN_CLASS_NAME" value="test.java.PorterTest" />
+      <option name="METHOD_NAME" value="should_return_Person2Win_when_2H_2H_5C_6D_8S_5H_6S_8S_9C_10C" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="PorterTest.should_return_Person2Win_when_2H_3H_5C_6D_8S_5H_6S_8S_9C_10C" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Porter" />
       <option name="PACKAGE_NAME" value="test.java" />
@@ -81,6 +91,7 @@
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.PorterTest" />
+        <item itemvalue="JUnit.PorterTest.should_return_Person2Win_when_2H_2H_5C_6D_8S_5H_6S_8S_9C_10C" />
         <item itemvalue="JUnit.PorterTest.should_return_Person2Win_when_2H_3H_5C_6D_8S_5H_6S_8S_9C_10C" />
         <item itemvalue="JUnit.PorterTest.should_return_1_when_2C_JC" />
       </list>
@@ -96,7 +107,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1566005157680</updated>
-      <workItem from="1566005161291" duration="7543000" />
+      <workItem from="1566005161291" duration="12188000" />
     </task>
     <servers />
   </component>
@@ -113,5 +124,16 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/PorterTest.java</url>
+          <line>40</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

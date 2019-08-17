@@ -32,4 +32,18 @@ public class PorterTest {
         assertEquals("Peace",result2);
         assertEquals("Person1Win",result3);
     }
+
+    @Test
+    public void should_return_Person2Win_when_2H_2H_5C_6D_8S_5H_6S_8S_9C_10C(){
+        //given
+        Porter porter = new Porter();
+        //when
+        String result1 = porter.judgeWhoWin("2H 2H 5C 6D 8S 5H 6S 8S 9C 10C");
+        String result2 = porter.judgeWhoWin("2H 3H 5C 6D 8S 5H 5S 8S 9C 10C");
+        String result3 = porter.judgeWhoWin("2H 2H 5C 6D QS 5H 5S 8S 9C 10C");
+        //then
+        assertEquals("Person1Win",result1);
+        assertEquals("Person2Win",result2);
+        assertEquals("Person2Win",result3);
+    }
 }

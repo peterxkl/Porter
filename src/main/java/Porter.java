@@ -1,7 +1,7 @@
 package main.java;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class Porter {
     public String judgeWhoWin(String s){
@@ -9,6 +9,12 @@ public class Porter {
         String s2 = s.substring(15);
         List<String> list1 = getSortedList(s1);
         List<String> list2 = getSortedList(s2);
+
+        if(isPair(list1)||isPair(list2))  return  compareIncludePair(list1,list2);
+
+        return judgeWhoWinInHighCard(list1,list2);
+    }
+    public String judgeWhoWinInHighCard(List<String> list1 , List<String> list2){
         String result = "";
         for (int i = list1.size()-1 ; i >= 0; i--){
             if(StringToInt(list1.get(i)) > StringToInt(list2.get(i))){
@@ -22,6 +28,31 @@ public class Porter {
             }
         }
         return result;
+    }
+
+    public Boolean isPair(List<String> sortedList){
+        List<Integer> numberList = sortedList.stream().map(x->StringToInt(x)).collect(Collectors.toList());
+        Set<Integer> numberSet = new HashSet<>(numberList);
+        if (numberSet.size() == 4) return true;
+        else return false;
+    }
+    public String compareIncludePair(List<String> list1 , List<String> list2){
+       if (isPair(list1)&&!isPair(list2)) return "Person1Win";
+       else if (!isPair(list1)&&isPair(list2)) return "Person2Win";
+       else if(isPair(list1)&&isPair(list2)){
+           List<Integer> numberList = list1.stream().map(x->StringToInt(x)).collect(Collectors.toList());
+           Set<Integer> numberSet = new HashSet<>(numberList);
+           int list1Number = numberList.stream().filter(x->numberSet.contains(x)).collect(Collectors.toList()).get(0);
+
+           List<Integer> numberList2 = list2.stream().map(x->StringToInt(x)).collect(Collectors.toList());
+           Set<Integer> numberSet2 = new HashSet<>(numberList2);
+           int list2Number = numberList2.stream().filter(x->numberSet2.contains(x)).collect(Collectors.toList()).get(0);
+
+           if (list1Number > list2Number) return "Person1Win";
+           else if (list1Number < list2Number) return "Person2Win";
+           else if (list1Number == list2Number) return judgeWhoWinInHighCard(list1,list2);
+       }
+       return "error";
     }
 
     public int getSizeResult(String s1 , String s2) {
