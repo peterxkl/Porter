@@ -48,7 +48,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.PorterTest">
+  <component name="RunManager" selected="JUnit.PorterTest.should_return_Person1Win_when_2H_2H_5C_5D_8S_5H_5S_8S_9C_10C">
     <configuration name="PorterTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Porter" />
       <option name="PACKAGE_NAME" value="test.java" />
@@ -63,6 +63,16 @@
       <option name="PACKAGE_NAME" value="test.java" />
       <option name="MAIN_CLASS_NAME" value="test.java.PorterTest" />
       <option name="METHOD_NAME" value="should_return_1_when_2C_JC" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PorterTest.should_return_Person1Win_when_2H_2H_5C_5D_8S_5H_5S_8S_9C_10C" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Porter" />
+      <option name="PACKAGE_NAME" value="test.java" />
+      <option name="MAIN_CLASS_NAME" value="test.java.PorterTest" />
+      <option name="METHOD_NAME" value="should_return_Person1Win_when_2H_2H_5C_5D_8S_5H_5S_8S_9C_10C" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -90,6 +100,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.PorterTest.should_return_Person1Win_when_2H_2H_5C_5D_8S_5H_5S_8S_9C_10C" />
         <item itemvalue="JUnit.PorterTest" />
         <item itemvalue="JUnit.PorterTest.should_return_Person2Win_when_2H_2H_5C_6D_8S_5H_6S_8S_9C_10C" />
         <item itemvalue="JUnit.PorterTest.should_return_Person2Win_when_2H_3H_5C_6D_8S_5H_6S_8S_9C_10C" />
@@ -107,7 +118,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1566005157680</updated>
-      <workItem from="1566005161291" duration="12188000" />
+      <workItem from="1566005161291" duration="18210000" />
     </task>
     <servers />
   </component>
@@ -130,8 +141,18 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/PorterTest.java</url>
-          <line>40</line>
-          <option name="timeStamp" value="2" />
+          <line>54</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/PorterTest.java</url>
+          <line>55</line>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/PorterTest.java</url>
+          <line>56</line>
+          <option name="timeStamp" value="8" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
