@@ -9,6 +9,7 @@ public class Porter {
         String s2 = s.substring(15);
         List<String> list1 = getSortedList(s1);
         List<String> list2 = getSortedList(s2);
+        if(isTreeKind(list1)||isTreeKind(list2))  return  compareIncludeTreeKind(list1,list2);
         if(isTwoPairs(list1)||isTwoPairs(list2))  return  compareIncludeTwoPair(list1,list2);
         if(isPair(list1)||isPair(list2))  return  compareIncludePair(list1,list2);
 
@@ -115,9 +116,51 @@ public class Porter {
         }
         return "error";
     }
+
+    public Boolean isTreeKind(List<String> sortedList){
+        List<Integer> numberList = sortedList.stream().map(x->StringToInt(x)).collect(Collectors.toList());
+        Set<Integer> numberSet = new HashSet<>(numberList);
+        int size = numberList.stream().collect(Collectors.toMap(e -> e, e -> 1, (a, b) -> a + b))
+                .entrySet().stream()
+                .filter(entry -> entry.getValue() > 1)
+                .map(entry -> entry.getKey())
+                .collect(Collectors.toList()).size();
+
+        if (numberSet.size() == 3 && size == 1) return true;
+        else return false;
+    }
+    public String compareIncludeTreeKind(List<String> list1 , List<String> list2){
+        if (isTreeKind(list1)&&!isTreeKind(list2)) return "Person1Win";
+        else if (!isTreeKind(list1)&&isTreeKind(list2)) return "Person2Win";
+        else if(isTreeKind(list1)&&isTreeKind(list2)){
+            List<Integer> numberList = list1.stream().map(x->StringToInt(x)).collect(Collectors.toList());
+            int list1Number1 = 0;
+            int list2Number1 = 0;
+
+            list1Number1 = numberList.stream().collect(Collectors.toMap(e -> e, e -> 1, (a, b) -> a + b))
+                    .entrySet().stream()
+                    .filter(entry -> entry.getValue() > 1)
+                    .map(entry -> entry.getKey())
+                    .collect(Collectors.toList()).get(0);
+
+            List<Integer> numberList2 = list2.stream().map(x->StringToInt(x)).collect(Collectors.toList());
+            list2Number1 = numberList2.stream().collect(Collectors.toMap(e -> e, e -> 1, (a, b) -> a + b))
+                    .entrySet().stream()
+                    .filter(entry -> entry.getValue() > 1)
+                    .map(entry -> entry.getKey())
+                    .collect(Collectors.toList()).get(0);
+
+            if (list1Number1 < list2Number1) return "Person2Win";
+            else if (list1Number1 > list2Number1) return "Person1Win";
+            else if (list1Number1 == list2Number1) return judgeWhoWinInHighCard(list1,list2);
+
+        }
+        return "error";
+    }
+
     public int getSizeResult(String s1 , String s2) {
-        int s1Size = StringToInt(s1.substring(0,1));
-        int s2Size = StringToInt(s2.substring(0,1));
+        int s1Size = StringToInt(s1);
+        int s2Size = StringToInt(s2);
         if (s1Size > s2Size) return 1;
         else if (s1Size < s2Size) return 2;
         else if (s1Size == s2Size) return 0;
