@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="6ca62c45-9679-4d46-8c9f-abb891f1be40" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Porter/main/java/Porter.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Porter/main/java/Porter.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Porter/test/java/PorterTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Porter/test/java/PorterTest.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Porter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Porter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/PorterTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/PorterTest.java" afterDir="false" />
@@ -58,16 +57,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PorterTest.should_return_Person1Win_when_2H_2D_2C_5D_8S_5H_5S_8S_9C_10C" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Porter" />
-      <option name="PACKAGE_NAME" value="test.java" />
-      <option name="MAIN_CLASS_NAME" value="test.java.PorterTest" />
-      <option name="METHOD_NAME" value="should_return_Person1Win_when_2H_2D_2C_5D_8S_5H_5S_8S_9C_10C" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="PorterTest.should_return_Person1Win_when_2H_3H_4H_10H_JH_8C_9C_10D_JC_QH" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Porter" />
       <option name="PACKAGE_NAME" value="test.java" />
@@ -88,6 +77,16 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="PorterTest.should_return_Person2Win_when_2H_3H_4H_10H_JH_2C_2S_5D_5C_2D" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Porter" />
+      <option name="PACKAGE_NAME" value="test.java" />
+      <option name="MAIN_CLASS_NAME" value="test.java.PorterTest" />
+      <option name="METHOD_NAME" value="should_return_Person2Win_when_2H_3H_4H_10H_JH_2C_2S_5D_5C_2D" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="PorterTest.should_return_Person2Win_when_2H_3H_5C_6D_8S_5H_6S_8S_9C_10C" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Porter" />
       <option name="PACKAGE_NAME" value="test.java" />
@@ -101,10 +100,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.PorterTest" />
+        <item itemvalue="JUnit.PorterTest.should_return_Person2Win_when_2H_3H_4H_10H_JH_2C_2S_5D_5C_2D" />
         <item itemvalue="JUnit.PorterTest.should_return_Person2Win_when_2H_3H_5C_6D_8S_5H_6S_8S_9C_10C" />
         <item itemvalue="JUnit.PorterTest.should_return_Person1Win_when_2H_3H_4H_10H_JH_8C_9C_10D_JC_QH" />
         <item itemvalue="JUnit.PorterTest.should_return_Person2Win_when_2H_2D_2C_5D_8S_5H_6S_7S_8C_9C" />
-        <item itemvalue="JUnit.PorterTest.should_return_Person1Win_when_2H_2D_2C_5D_8S_5H_5S_8S_9C_10C" />
       </list>
     </recent_temporary>
   </component>
@@ -120,7 +119,7 @@
       <updated>1566005157680</updated>
       <workItem from="1566005161291" duration="22132000" />
       <workItem from="1566045921042" duration="254000" />
-      <workItem from="1566092598012" duration="3833000" />
+      <workItem from="1566092598012" duration="5750000" />
     </task>
     <servers />
   </component>
@@ -139,16 +138,5 @@
         </entry>
       </map>
     </option>
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/PorterTest.java</url>
-          <line>26</line>
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

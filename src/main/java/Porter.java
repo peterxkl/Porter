@@ -16,6 +16,7 @@ public class Porter {
 //        String s2 = s.substring(15);
         List<String> list1 = getSortedList(list11);
         List<String> list2 = getSortedList(list22);
+        if(isFullHouse(list1)||isFullHouse(list2))  return  compareIncludeFullHouse(list1,list2);
         if(isFlush(list1)||isFlush(list2))  return  compareIncludeFlush(list1,list2);
         if(isStraight(list1)||isStraight(list2))  return  compareIncludeStraight(list1,list2);
         if(isTreeKind(list1)||isTreeKind(list2))  return  compareIncludeTreeKind(list1,list2);
@@ -194,6 +195,70 @@ public class Porter {
             if (StringToInt(list1.get(list1.size()-1)) > StringToInt(list2.get(list2.size()-1))) return "Person1Win";
             else if (StringToInt(list1.get(list1.size()-1)) < StringToInt(list2.get(list2.size()-1))) return "Person2Win";
             else if (StringToInt(list1.get(list1.size()-1)) == StringToInt(list2.get(list2.size()-1))) return "Peace";
+        }
+        return "error";
+    }
+
+    public Boolean isFullHouse(List<String> sortedList){
+        List<Integer> numberList = sortedList.stream().map(x->StringToInt(x)).collect(Collectors.toList());
+        Set<Integer> numberSet = new HashSet<>(numberList);
+        int size = numberList.stream().collect(Collectors.toMap(e -> e, e -> 1, (a, b) -> a + b))
+                .entrySet().stream()
+                .filter(entry -> entry.getValue() > 1)
+                .map(entry -> entry.getKey())
+                .collect(Collectors.toList()).size();
+
+        if (numberSet.size() == 2 && size == 2) return true;
+        else return false;
+    }
+    public String compareIncludeFullHouse(List<String> list1 , List<String> list2){
+        if (isFullHouse(list1)&&!isFullHouse(list2)) return "Person1Win";
+        else if (!isFullHouse(list1)&&isFullHouse(list2)) return "Person2Win";
+        else if(isFullHouse(list1)&&isFullHouse(list2)){
+            List<Integer> numberList = list1.stream().map(x->StringToInt(x)).collect(Collectors.toList());
+            int list1Number1 = 0;
+            int list1Number2 = 0;
+            int list1NumberIsThree = 0;
+            int list2Number1 = 0;
+            int list2Number2 = 0;
+            int list2NumberIsThree = 0;
+
+            list1Number1 = numberList.stream().collect(Collectors.toMap(e -> e, e -> 1, (a, b) -> a + b))
+                    .entrySet().stream()
+                    .filter(entry -> entry.getValue() > 1)
+                    .map(entry -> entry.getKey())
+                    .collect(Collectors.toList()).get(0);
+            list1Number2 = numberList.stream().collect(Collectors.toMap(e -> e, e -> 1, (a, b) -> a + b))
+                    .entrySet().stream()
+                    .filter(entry -> entry.getValue() > 1)
+                    .map(entry -> entry.getKey())
+                    .collect(Collectors.toList()).get(1);
+            int num = 0;
+            for (int i = 0 ; i < numberList.size(); i++){
+                if (numberList.get(i) == list1Number1) num++;
+            }
+            list1NumberIsThree = (num == 3) ? list1Number1 : list1Number2;
+
+
+            List<Integer> numberList2 = list2.stream().map(x->StringToInt(x)).collect(Collectors.toList());
+            list2Number1 = numberList2.stream().collect(Collectors.toMap(e -> e, e -> 1, (a, b) -> a + b))
+                    .entrySet().stream()
+                    .filter(entry -> entry.getValue() > 1)
+                    .map(entry -> entry.getKey())
+                    .collect(Collectors.toList()).get(0);
+            list2Number2 = numberList2.stream().collect(Collectors.toMap(e -> e, e -> 1, (a, b) -> a + b))
+                    .entrySet().stream()
+                    .filter(entry -> entry.getValue() > 1)
+                    .map(entry -> entry.getKey())
+                    .collect(Collectors.toList()).get(0);
+            int num2 = 0;
+            for (int i = 0 ; i < numberList2.size(); i++){
+                if (numberList2.get(i) == list2Number1) num2++;
+            }
+            list2NumberIsThree = (num2 == 3) ? list2Number1 : list2Number2;
+
+            if (list1NumberIsThree < list2NumberIsThree) return "Person2Win";
+            else if (list1NumberIsThree > list2NumberIsThree) return "Person1Win";
         }
         return "error";
     }
