@@ -84,4 +84,14 @@ public class PorterTest {
         assertEquals("Person2Win",result1);
         assertEquals("Person2Win",result2);
     }
+
+    @Test
+    public void should_return_Person1Win_when_2H_3H_4H_10H_JH_8C_9C_10D_JC_QH(){
+        //given
+        Porter porter = new Porter();
+        //when
+        String result1 = porter.judgeWhoWin("2H 3H 4H 10H JH 8C 9C 10D JC QH");
+        //then
+        assertEquals("Person1Win",result1);
+    }
 }

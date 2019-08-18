@@ -5,10 +5,18 @@ import java.util.stream.Collectors;
 
 public class Porter {
     public String judgeWhoWin(String s){
-        String s1 = s.substring(0,15);
-        String s2 = s.substring(15);
-        List<String> list1 = getSortedList(s1);
-        List<String> list2 = getSortedList(s2);
+        List<String> list11 = new ArrayList<>();
+        List<String> list22 = new ArrayList<>();
+        String[] array = s.split(" ");
+        for (int i = 0 ; i < array.length ; i++ ){
+            if (i < 5) list11.add(array[i]);
+            else list22.add(array[i]);
+        }
+//        String s1 = s.substring(0,15);
+//        String s2 = s.substring(15);
+        List<String> list1 = getSortedList(list11);
+        List<String> list2 = getSortedList(list22);
+        if(isFlush(list1)||isFlush(list2))  return  compareIncludeFlush(list1,list2);
         if(isStraight(list1)||isStraight(list2))  return  compareIncludeStraight(list1,list2);
         if(isTreeKind(list1)||isTreeKind(list2))  return  compareIncludeTreeKind(list1,list2);
         if(isTwoPairs(list1)||isTwoPairs(list2))  return  compareIncludeTwoPair(list1,list2);
@@ -168,7 +176,21 @@ public class Porter {
     public String compareIncludeStraight(List<String> list1 , List<String> list2){
         if (isStraight(list1)&&!isStraight(list2)) return "Person1Win";
         else if (!isStraight(list1)&&isStraight(list2)) return "Person2Win";
-        else if(isStraight(list1)&&isStraight(list2)){
+        else if(isStraight(list1)&&isStraight(list2)) return judgeWhoWinInHighCard( list1 , list2);
+        return "error";
+    }
+
+    public Boolean isFlush(List<String> sortedList){
+        String s = sortedList.get(0).substring(sortedList.get(0).length()-1);
+        for (int i = 1; i < sortedList.size(); i++){
+            if (!sortedList.get(i).substring(sortedList.get(i).length()-1).equals(s)) return false;
+        }
+        return true;
+    }
+    public String compareIncludeFlush(List<String> list1 , List<String> list2){
+        if (isFlush(list1)&&!isFlush(list2)) return "Person1Win";
+        else if (!isFlush(list1)&&isFlush(list2)) return "Person2Win";
+        else if(isFlush(list1)&&isFlush(list2)){
             if (StringToInt(list1.get(list1.size()-1)) > StringToInt(list2.get(list2.size()-1))) return "Person1Win";
             else if (StringToInt(list1.get(list1.size()-1)) < StringToInt(list2.get(list2.size()-1))) return "Person2Win";
             else if (StringToInt(list1.get(list1.size()-1)) == StringToInt(list2.get(list2.size()-1))) return "Peace";
@@ -208,12 +230,7 @@ public class Porter {
         return result;
     }
 
-    public List<String> getSortedList(String s){
-        List<String> list = new ArrayList<>();
-        String[] array = s.split(" ");
-        for (int i = 0 ; i < array.length ; i++ ){
-            list.add(array[i]);
-        }
+    public List<String> getSortedList(List<String> list){
         String tmp="";
         for(int i=1;i<list.size()-1;i++){
             for (int j=0;j<list.size()-i;j++){
