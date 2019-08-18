@@ -104,4 +104,14 @@ public class PorterTest {
         //then
         assertEquals("Person2Win",result1);
     }
+
+    @Test
+    public void should_return_Person1Win_when_3C_3S_3H_5C_3D_2C_2S_6D_6C_2D(){
+        //given
+        Porter porter = new Porter();
+        //when
+        String result1 = porter.judgeWhoWin("3C 3S 3H 5C 3D 2C 2S 6D 6C 2D");
+        //then
+        assertEquals("Person1Win",result1);
+    }
 }

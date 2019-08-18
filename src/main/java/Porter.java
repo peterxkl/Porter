@@ -16,6 +16,7 @@ public class Porter {
 //        String s2 = s.substring(15);
         List<String> list1 = getSortedList(list11);
         List<String> list2 = getSortedList(list22);
+        if(isFourKind(list1)||isFourKind(list2))  return  compareIncludeFourKind(list1,list2);
         if(isFullHouse(list1)||isFullHouse(list2))  return  compareIncludeFullHouse(list1,list2);
         if(isFlush(list1)||isFlush(list2))  return  compareIncludeFlush(list1,list2);
         if(isStraight(list1)||isStraight(list2))  return  compareIncludeStraight(list1,list2);
@@ -259,6 +260,46 @@ public class Porter {
 
             if (list1NumberIsThree < list2NumberIsThree) return "Person2Win";
             else if (list1NumberIsThree > list2NumberIsThree) return "Person1Win";
+        }
+        return "error";
+    }
+
+    public Boolean isFourKind(List<String> sortedList){
+        List<Integer> numberList = sortedList.stream().map(x->StringToInt(x)).collect(Collectors.toList());
+        Set<Integer> numberSet = new HashSet<>(numberList);
+        int size = numberList.stream().collect(Collectors.toMap(e -> e, e -> 1, (a, b) -> a + b))
+                .entrySet().stream()
+                .filter(entry -> entry.getValue() > 1)
+                .map(entry -> entry.getKey())
+                .collect(Collectors.toList()).size();
+
+        if (numberSet.size() == 2 && size == 1) return true;
+        else return false;
+    }
+    public String compareIncludeFourKind(List<String> list1 , List<String> list2){
+        if (isFourKind(list1)&&!isFourKind(list2)) return "Person1Win";
+        else if (!isFourKind(list1)&&isFourKind(list2)) return "Person2Win";
+        else if(isFourKind(list1)&&isFourKind(list2)){
+            List<Integer> numberList = list1.stream().map(x->StringToInt(x)).collect(Collectors.toList());
+            int list1Number1 = 0;
+            int list2Number1 = 0;
+
+            list1Number1 = numberList.stream().collect(Collectors.toMap(e -> e, e -> 1, (a, b) -> a + b))
+                    .entrySet().stream()
+                    .filter(entry -> entry.getValue() > 1)
+                    .map(entry -> entry.getKey())
+                    .collect(Collectors.toList()).get(0);
+
+            List<Integer> numberList2 = list2.stream().map(x->StringToInt(x)).collect(Collectors.toList());
+            list2Number1 = numberList2.stream().collect(Collectors.toMap(e -> e, e -> 1, (a, b) -> a + b))
+                    .entrySet().stream()
+                    .filter(entry -> entry.getValue() > 1)
+                    .map(entry -> entry.getKey())
+                    .collect(Collectors.toList()).get(0);
+
+            if (list1Number1 < list2Number1) return "Person2Win";
+            else if (list1Number1 > list2Number1) return "Person1Win";
+
         }
         return "error";
     }
