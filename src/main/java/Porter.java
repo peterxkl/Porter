@@ -16,6 +16,7 @@ public class Porter {
 //        String s2 = s.substring(15);
         List<String> list1 = getSortedList(list11);
         List<String> list2 = getSortedList(list22);
+        if(isStraightFlush(list1)||isStraightFlush(list2))  return  compareIncludeStraightFlush(list1,list2);
         if(isFourKind(list1)||isFourKind(list2))  return  compareIncludeFourKind(list1,list2);
         if(isFullHouse(list1)||isFullHouse(list2))  return  compareIncludeFullHouse(list1,list2);
         if(isFlush(list1)||isFlush(list2))  return  compareIncludeFlush(list1,list2);
@@ -302,6 +303,16 @@ public class Porter {
 
         }
         return "error";
+    }
+
+    public Boolean isStraightFlush(List<String> sortedList){
+        Boolean isStraight = isStraight(sortedList);
+        Boolean isFlush = isFlush(sortedList);
+        if (isFlush && isStraight) return true;
+        else return false;
+    }
+    public String compareIncludeStraightFlush(List<String> list1 , List<String> list2){
+        return compareIncludeStraight(list1 , list2);
     }
 
     public int getSizeResult(String s1 , String s2) {
